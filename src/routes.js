@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import aList from '@/components/alumno/list'
 import pList from '@/components/profesor/list'
+import pform from '@/components/profesor/form'
+
 import asList from '@/components/asignatura/list'
 import hList from '@/components/horario/list'
 import hw from '@/components/HelloWorld'
@@ -32,11 +34,15 @@ const router = new Router({
         component: asList,
       },
       {
-        path: '/hList',
+        path: '/hList', 
         name: 'hList',
         component: hList,
       },
-        
+      {
+        path: '/createprof',
+        name: 'formprof',
+        component: pform,
+      },
     ]
 });
 export default router
