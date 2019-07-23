@@ -18,7 +18,7 @@ const router = new Router({
         component: hw,
       },
       {
-        path: '/createprof',
+        path: '/pform',
         name: 'formprof',
         component: pform,
       },

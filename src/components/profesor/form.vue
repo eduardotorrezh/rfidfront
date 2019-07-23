@@ -1,6 +1,10 @@
 <template>
-
-    <v-form ref="form" v-model="valid" lazy-validation>
+<v-app>
+    <v-content>
+        <h1>Registro de profesores</h1>
+        <v-spacer></v-spacer>
+            <v-container>
+        <v-form ref="form" v-model="valid" lazy-validation>
         <v-text-field v-model="name" :rules="nameRules" label="Nombre" required></v-text-field>
 
         <v-text-field v-model="lastname" :rules="nameRules" label="Apellido paterno" required></v-text-field>
@@ -17,6 +21,10 @@
         </v-btn>
 
     </v-form>
+            </v-container>
+    </v-content>
+</v-app>
+    
 </template>
 
 <script>
@@ -52,5 +60,10 @@
 </script>
 
 <style>
+body{
+background: #74ebd5;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #ACB6E5, #74ebd5);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #ACB6E5, #74ebd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+}
 </style>
