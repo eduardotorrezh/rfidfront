@@ -1,21 +1,32 @@
 <template>
-        <template>
+    <v-app>
 
-                <v-data-table
-                  :headers="headers"
-                  :items="profesores"
-                  class="elevation-1"
-                >
-                  <template v-slot:items="props">
-                    <td >{{ props.item.nombre }}</td>
-                    <td >{{ props.item.a_paterno }}</td>
-                    <td >{{ props.item.a_materno }}</td>
-                    <td >{{ props.item.materias }}</td>
-                    <td >{{ props.item.iron }}</td>
-                </template>
-                </v-data-table>
+    <v-content>
+        <h1>Listado de profesores</h1>
+            <v-spacer></v-spacer>
+            <v-container>
+            <v-data-table
+          :headers="headers"
+          :items="profesores"
+          class="elevation-1"
+        >
+          <template v-slot:items="props">
+            <td>{{ props.item.nombre }}</td>
+            <td >{{ props.item.apellido_pat }}</td>
+            <td >{{ props.item.apellido_mat }}</td>
+            <td >{{ props.item.materias }}</td>
+            <!-- <td >{{ props.item.protein }}</td>
+            <td >{{ props.item.iron }}</td> -->
+          </template>
+        </v-data-table>
+    </v-container>
+    </v-content>
+    
+    
+</v-app>  
 </template>
 
+<script>
 export default {
     data () {
       return {
@@ -35,31 +46,45 @@ export default {
             {
                 id: 1,
                 nombre: 'Eduardo',
-                a_paterno: 'Torres',
-                a_materno: 'Hurtado',
+                apellido_pat: 'Torres',
+                apellido_mat: 'Hurtado',
                 materias: 'Matematicas'
             }, 
             {
                 id: 2,
                 nombre: 'Jaime',
-                a_paterno: 'Torrez',
-                a_materno: 'urtado',
+                apellido_pat: 'Torrez',
+                apellido_mat: 'urtado',
                 materias: 'Español'
             },
             {
                 id: 3,
                 nombre: 'Fredo',
-                a_paterno: 'Saliz',
-                a_materno: 'Chañiga',
+                apellido_pat: 'Saliz',
+                apellido_mat: 'Chañiga',
                 materias: 'Gmail'
             },
             {
                 id: 4,
                 nombre: 'Danny',
-                a_paterno: 'Guerra',
-                a_materno: 'Narv',
+                apellido_pat: 'Guerra',
+                apellido_mat: 'Narv',
                 materias: 'Mates ing'
             },
+            {
+                      id: 6,
+                      nombre: 'Daniel',
+                      apellido_pat: 'Guerra',
+                      apellido_mat: 'Narvaez',
+                      materias: 'POO'
+                  },
+          {
+                      id: 7,
+                      nombre: 'Williams',
+                      apellido_pat: 'Garcia',
+                      apellido_mat: 'Jimenez',
+                      materias: 'FCyE'
+                  },
             
         ]
       }
@@ -67,12 +92,13 @@ export default {
   }
 </script>
 
-<script>
-export default {
 
-}
-</script>
+
 
 <style>
-
+body{
+    background: #0f0c29;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 </style>
