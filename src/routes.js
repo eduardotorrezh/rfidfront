@@ -36,7 +36,7 @@ const router = new Router({
         name: 'hList',
         component: hList,
       },
-        
+     
     ]
 });
 export default router
