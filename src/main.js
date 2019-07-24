@@ -7,14 +7,7 @@ import 'vuetify/dist/vuetify.min.css'
 import router from './routes';
 import axios from 'axios'
 
-Vue.use(Vuetify,router,axios, {
-  theme:{
-    primary: '#69F0AE',
-    secondary: '#B9F6CA',
-    back:"FFFFFF",
-    tree: '#00E676',
-  }
-})
+Vue.use(Vuetify,router,axios)
 
 Vue.config.productionTip = false
 
