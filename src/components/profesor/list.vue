@@ -12,14 +12,16 @@
         >
           <template v-slot:items="props">
             <td>{{ props.item.nombre }}</td>
-            <td >{{ props.item.apellido_pat }}</td>
-            <td >{{ props.item.apellido_mat }}</td>
-            <td >{{ props.item.materias }}</td>
-            <!-- <td >{{ props.item.protein }}</td>
-            <td >{{ props.item.iron }}</td> -->
+            <td >{{ props.item.apellido_paterno }}</td>
+            <td >{{ props.item.apellido_materno }}</td>
+            <td >{{ props.item.matricula }}</td>
+            <td > <v-btn  color="green">Edit </v-btn> <v-btn  color="red">Delete </v-btn></td> 
           </template>
         </v-data-table>
     </v-container>
+    <v-btn  color="green">
+            Validate
+        </v-btn>
     </v-content>
     
     
@@ -27,76 +29,40 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     data () {
       return {
         headers: [
           {
-            text: 'Nombre',
-            // align: 'left',
-            // sortable: false,
-            // value: 'Nombre'
+            text: 'Nombre'
           },
           { text: 'Apellido Paterno', value: 'paterno' },
           { text: 'Apellido Materno', value: 'materno' },
-          { text: 'Materias', value: 'materias' },
-          { text: 'Información', value: 'info' },
+          { text: 'Matricula', value: 'matricula' },
+          { text: 'Acciones', value: 'actions' },
+
+
         ],
-        profesores: [
-            {
-                id: 1,
-                nombre: 'Eduardo',
-                apellido_pat: 'Torres',
-                apellido_mat: 'Hurtado',
-                materias: 'Matematicas'
-            }, 
-            {
-                id: 2,
-                nombre: 'Jaime',
-                apellido_pat: 'Torrez',
-                apellido_mat: 'urtado',
-                materias: 'Español'
-            },
-            {
-                id: 3,
-                nombre: 'Fredo',
-                apellido_pat: 'Saliz',
-                apellido_mat: 'Chañiga',
-                materias: 'Gmail'
-            },
-            {
-                id: 4,
-                nombre: 'Danny',
-                apellido_pat: 'Guerra',
-                apellido_mat: 'Narv',
-                materias: 'Mates ing'
-            },
-            {
-                      id: 6,
-                      nombre: 'Daniel',
-                      apellido_pat: 'Guerra',
-                      apellido_mat: 'Narvaez',
-                      materias: 'POO'
-                  },
-          {
-                      id: 7,
-                      nombre: 'Williams',
-                      apellido_pat: 'Garcia',
-                      apellido_mat: 'Jimenez',
-                      materias: 'FCyE'
-                  },
-            
-        ]
+        profesores: []
       }
+    }, methods:{
+      getProfesores(){
+       
+        axios.get('http://localhost:3000/profesor')
+        .then((response) => {
+          this.profesores = response.data.r
+          console.log(response.data.r)
+        }).then(error => console.log(error));
+      }
+    },
+    created(){
+      this.getProfesores()
     }
   }
 </script>
 
 
-
-
 <style>
-body{
-  
-}
+
 </style>
