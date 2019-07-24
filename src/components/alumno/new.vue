@@ -37,7 +37,7 @@ import swal from 'sweetalert'
     export default {
         data(){
             return{
-                profid: this.$route.params.profesorid,
+                // profid: this.$route.params.profesorid,
                 form: {
                     nombre:'',
                     apellido_paterno:'',
@@ -61,7 +61,7 @@ import swal from 'sweetalert'
                 const path = 'http://localhost:3000/registro'
                 Axios.post(path,dataq)
                 .then((response) => {
-                    console.log(response)
+                    console.log(response.data)
                     swal("Alumno creado correctamente!","","success")
                 })
             }

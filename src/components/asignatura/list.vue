@@ -16,9 +16,9 @@
           <template v-slot:items="props">
             <td>{{ props.item.nombre }}</td>
             <td >{{ props.item.id_profesor }}</td>
-            <td > <v-btn class="ma-2" color="primary" dark>Editar
+            <td > <v-btn class="ma-2" color="primary" dark  :to="{ name:'maedit', params: {materiaid: props.item.id} }">Editar
         <v-icon dark right>check_circle</v-icon>
-      </v-btn><v-btn class="ma-2" color="red" dark>Eliminar <v-icon dark right>block</v-icon> </v-btn></td> 
+      </v-btn><v-btn class="ma-2" color="red" dark :to="{ name:'madel', params: {materiaid: props.item.id} }">Eliminar<v-icon dark right>block</v-icon> </v-btn></td> 
           </template>
         </v-data-table>
     </v-container>

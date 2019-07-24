@@ -7,17 +7,13 @@
         <v-form  @submit="onSubmit">
         <v-text-field v-model.trim="form.nombre"  label="Nombre" required></v-text-field>
 
-        <v-text-field v-model.trim="form.apellido_paterno"  label="Apellido paterno" required></v-text-field>
-
-        <v-text-field v-model.trim="form.apellido_materno"  label="Apellido materno" required></v-text-field>
-
-        <v-text-field v-model.trim="form.matricula"  label="Matricula" required></v-text-field>
+        <v-text-field v-model.trim="form.id_profesor"  label="Id profesor" required></v-text-field>
 
 
         <v-btn v-on:click="onSubmit">
             Editar
         </v-btn>
-        <v-btn color="red" :to="{ name: 'pList' }">
+        <v-btn color="red" :to="{ name: 'asList' }">
             Cancelar
         </v-btn>
 
@@ -34,54 +30,49 @@ import swal from 'sweetalert'
     export default {
         data(){
             return{
-                profid: this.$route.params.profesorid,
+                // profid: this.$route.params.profesorid,
                 form: {
                     nombre:'',
-                    apellido_paterno:'',
-                    apellido_materno:'',
-                    matricula:null
+                    id_profesor: ''
                 }
             }
         },
         methods: {
             onSubmit() {
-                const idroute = this.$route.params.profid
+                const idroute = this.$route.params.materiaid
                 const dataq = { 
                     id: idroute,
-                    nombre: this.form.nombre,
-                    apellido_paterno: this.form.apellido_paterno,
-                    apellido_materno: this.form.apellido_materno,
-                    matricula: this.form.matricula
-                    }
+                    nombre : this.form.nombre,
+                    id_profesor: this.form.id_profesor
+                }
                  console.log(dataq)
 
-                const path = 'http://localhost:3000/profesorUpdate'
+                const path = 'http://localhost:3000/materiaUpdate'
                 Axios.post(path,dataq)
                 .then((response) => {
-                    
+                    console.log(response)
                 })
-                swal("Profesor editado correctamente!","","success")
+                swal("Matria editada correctamente!","","success")
             },
-            getProfesor(){
-                const idroute = this.$route.params.profid
+            getMateria(){
+                const idroute = this.$route.params.materiaid
                 console.log("Esta cosa es lo que tiene el rout.params "+idroute)
-                const dataq = { id_profesor: idroute}
-                const path = 'http://localhost:3000/profesorById'
+                const dataq = { id_materia: idroute}
+                const path = 'http://localhost:3000/materiaById'
                 Axios.post(path,dataq
                 ).then((response) => {
                     console.log(response.data.r[0])
                     console.log(response.data.r)
 
                     this.form.nombre = response.data.r[0].nombre
-                    this.form.apellido_paterno = response.data.r[0].apellido_paterno
-                    this.form.apellido_materno = response.data.r[0].apellido_materno
-                    this.form.matricula = response.data.r[0].matricula
+                    this.form.id_profesor = response.data.r[0].id_profesor
+                  
 
                 })
             }
         }, created(){
             
-            this.getProfesor()
+            this.getMateria()
         }
     }
 </script>

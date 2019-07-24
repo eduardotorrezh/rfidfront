@@ -12,6 +12,8 @@ import nedit from '@/components/profesor/new'
 import dedit from '@/components/profesor/delete'
 import asList from '@/components/asignatura/list'
 import matnew from '@/components/asignatura/new'
+import maedit from '@/components/asignatura/edit'
+import madel from '@/components/asignatura/delete'
 
 import cmateria from '@/components/asignatura/form'
 import hList from '@/components/horario/list'
@@ -99,6 +101,16 @@ const router = new Router({
         name: 'cmateria',
         component: cmateria,
       },
+      {
+        path: '/materia/:materiaid/edit',
+        name: 'maedit',
+        component: maedit,
+      },
+      {
+        path: '/materia/:materiaid/delete',
+        name: 'madel',
+        component: madel,
+      }
       
     ]
 });
