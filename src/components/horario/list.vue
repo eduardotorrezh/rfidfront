@@ -20,7 +20,7 @@
             <td > <v-btn class="ma-2" color="primary" :to="{ name:'halumno', params: {alumnoid: props.item.id} }" dark>Horario
         <v-icon dark right>check_circle</v-icon>
       </v-btn>
-      <v-btn class="ma-2" color="green" :to="{ name:'halumno', params: {alumnoid: props.item.id} }" dark>Cargar Materia
+      <v-btn class="ma-2" color="green" :to="{ name:'hm', params: {alumnoid: props.item.id} }" dark>Cargar Materia
         <v-icon dark right>check_circle</v-icon>
       </v-btn>
       </td> 

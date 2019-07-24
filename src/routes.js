@@ -21,6 +21,8 @@ import halumno from '@/components/horario/hlist'
 import hw from '@/components/HelloWorld'
 import pform from '@/components/profesor/form'
 
+import hM from '@/components/horario/new'
+
 Vue.use(Router)
 
 const router = new Router({
@@ -110,6 +112,11 @@ const router = new Router({
         path: '/materia/:materiaid/delete',
         name: 'madel',
         component: madel,
+      },
+      {
+        path: '/horario/:alumnoid/hm',
+        name: 'hm',
+        component: hM,
       }
       
     ]
