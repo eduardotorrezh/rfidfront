@@ -144,7 +144,8 @@
           apellido_materno: '',
           matricula: '',
           rfid: ''
-        }
+        },
+        editedIndex: -1,
       }
     }, methods: {
       getAlumno() {
@@ -171,13 +172,25 @@
         this.dialog = false
       },
       save2(){
+        axios.post('http://localhost:3000/alumnoUpdate', {
+          nombre: this.alumno.nombre,
+          apellido_paterno: this.alumno.apellido_paterno,
+          apellido_materno: this.alumno.apellido_materno,
+          matrícula: this.alumno.matricula,
+          rfid: this.alumno.rfid
+        }).then((response) => {
+            console.log(response.data)
+          }).then(error => console.log(error));
 
+          this.close2()
       },
       close2(){
-
+        this.dialog2 = false
       },
       edit(item){
-        
+        this.editedIndex = this.desserts.indexOf(item)
+        this.alumno2 = Object.assign({}, item)
+        this.dialog2 = true
       },
       delete(item){
 
