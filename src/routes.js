@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import aList from '@/components/alumno/list'
 import pList from '@/components/profesor/list'
+import pedit from '@/components/profesor/edit'
 import asList from '@/components/asignatura/list'
 import hList from '@/components/horario/list'
 import hw from '@/components/HelloWorld'
@@ -41,6 +42,11 @@ const router = new Router({
         path: '/hList',
         name: 'hList',
         component: hList,
+      },
+      {
+        path: '/profesor/:profid/edit',
+        name: 'pedit',
+        component: pedit,
       },
      
     ]

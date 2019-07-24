@@ -11,10 +11,8 @@
 
         <v-text-field v-model="mlastname" :rules="nameRules" label="Apellido materno" required></v-text-field>
 
-        <v-select v-model="select" :items="items" :rules="[v => !!v || 'Item is required']" label="Selecciona materia" required></v-select>
+        <v-text-field v-model="mlastname" :rules="nameRules" label="Apellido materno" required></v-text-field>
 
-        <v-checkbox v-model="checkbox" :rules="[v => !!v || 'You must agree to continue!']" label="Estás seguro que deseas crear?"
-            required></v-checkbox>
 
         <v-btn :disabled="!valid" color="green" @click="validate">
             Validate
