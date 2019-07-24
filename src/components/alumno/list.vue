@@ -22,7 +22,7 @@
             <td >{{ props.item.matricula }}</td>
             <td >{{ props.item.rfid }}</td>
 
-            <td > <v-btn class="ma-2" color="primary" :to="{ name:'aedit', params: {alumnoid: props.item.rfid} }" dark>Editar
+            <td > <v-btn class="ma-2" color="primary" :to="{ name:'aedit', params: {alumnoid: props.item.rfid, ai:props.item.id} }" dark>Editar
         <v-icon dark right>check_circle</v-icon>
       </v-btn><v-btn class="ma-2"  color="red" :to="{ name:'aldelete', params: {alumnoid: props.item.rfid} }" dark >Eliminar <v-icon dark right>block</v-icon> </v-btn></td> 
           </template>

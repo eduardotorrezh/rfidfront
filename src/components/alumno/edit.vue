@@ -37,8 +37,9 @@ import swal from 'sweetalert'
     export default {
         data(){
             return{
-                alumnoid: this.$route.params.alumnoid,
-                idal:'13',
+                // alumnoid: this.$route.params.alumnoid,
+                // ai: this.$route.params.ai,
+                
                 form: {
                     nombre:'',
                     apellido_paterno:'',
@@ -52,8 +53,9 @@ import swal from 'sweetalert'
         methods: {
             onSubmit() {
                 const idroute = this.$route.params.alumnoid
+                const ai = this.$route.params.ai
                 const dataq = { 
-                    id: idal,
+                    id: ai,
                     nombre: this.form.nombre,
                     apellido_paterno: this.form.apellido_paterno,
                     apellido_materno: this.form.apellido_materno,
@@ -61,7 +63,7 @@ import swal from 'sweetalert'
                     rfid: this.form.rfid
                     }
                 console.log(dataq)
-                console.log("IDAL TIENEEEEEEEEEEEE"+idal)
+                console.log("IDAL TIENEEEEEEEEEEEE"+ai)
 
 
                 const path = 'http://localhost:3000/alumnoUpdate'
@@ -69,19 +71,18 @@ import swal from 'sweetalert'
                 .then((response) => {
                     
                 })
-                swal("Profesor editado correctamente!","","success")
+                swal("Alumnno editado correctamente!","","success")
             },
             getAlumno(){
                 const idroute = this.$route.params.alumnoid
                 console.log("Esta cosa es lo que tiene el rout.params "+idroute)
-                const idal = ''
+                
                 const dataq = { rfid: idroute}
                 const path = 'http://localhost:3000/alumnoByRfid'
                 Axios.post(path,dataq
                 ).then((response) => {
                     console.log(response.data.r[0])
-                    console.log(response.data.r[0].id)
-                    this.idal = response.data.r[0].id
+                    
                     this.form.nombre = response.data.r[0].nombre
                     this.form.apellido_paterno = response.data.r[0].apellido_paterno
                     this.form.apellido_materno = response.data.r[0].apellido_materno
