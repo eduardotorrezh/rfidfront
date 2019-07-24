@@ -3,23 +3,32 @@
 
     <v-content>
         <h1>Listado de alumnos</h1>
+        
             <v-spacer></v-spacer>
+            <v-btn style="margin-left: 80%;" class="ma-2" color="green" :to="{ name: 'nalumno' }" dark>Crear Alumno
+        <v-icon dark>backup</v-icon>
+      </v-btn>
+      <v-spacer></v-spacer>
             <v-container>
             <v-data-table
           :headers="headers"
-          :items="desserts"
+          :items="alumnos"
           class="elevation-1"
         >
           <template v-slot:items="props">
-            <td>{{ props.item.name }}</td>
-            <td class="text-xs-right">{{ props.item.calories }}</td>
-            <td class="text-xs-right">{{ props.item.fat }}</td>
-            <td class="text-xs-right">{{ props.item.carbs }}</td>
-            <td class="text-xs-right">{{ props.item.protein }}</td>
-            <td class="text-xs-right">{{ props.item.iron }}</td>
+            <td>{{ props.item.nombre }}</td>
+            <td >{{ props.item.apellido_paterno }}</td>
+            <td >{{ props.item.apellido_materno }}</td>
+            <td >{{ props.item.matricula }}</td>
+            <td >{{ props.item.rfid }}</td>
+
+            <td > <v-btn class="ma-2" color="primary" :to="{ name:'aedit', params: {alumnoid: props.item.rfid} }" dark>Editar
+        <v-icon dark right>check_circle</v-icon>
+      </v-btn><v-btn class="ma-2"  color="red" :to="{ name:'aldelete', params: {alumnoid: props.item.rfid} }" dark >Eliminar <v-icon dark right>block</v-icon> </v-btn></td> 
           </template>
         </v-data-table>
     </v-container>
+   
     </v-content>
     
     
@@ -27,108 +36,41 @@
 </template>
 
 <script>
- export default {
-          data () {
-            return {
-              headers: [
-                {
-                  text: 'Dessert (100g serving)',
-                  align: 'left',
-                  sortable: false,
-                  value: 'name'
-                },
-                { text: 'Calories', value: 'calories' },
-                { text: 'Fat (g)', value: 'fat' },
-                { text: 'Carbs (g)', value: 'carbs' },
-                { text: 'Protein (g)', value: 'protein' },
-                { text: 'Iron (%)', value: 'iron' }
-              ],
-              desserts: [
-                {
-                  name: 'Frozen Yogurt',
-                  calories: 159,
-                  fat: 6.0,
-                  carbs: 24,
-                  protein: 4.0,
-                  iron: '1%'
-                },
-                {
-                  name: 'Ice cream sandwich',
-                  calories: 237,
-                  fat: 9.0,
-                  carbs: 37,
-                  protein: 4.3,
-                  iron: '1%'
-                },
-                {
-                  name: 'Eclair',
-                  calories: 262,
-                  fat: 16.0,
-                  carbs: 23,
-                  protein: 6.0,
-                  iron: '7%'
-                },
-                {
-                  name: 'Cupcake',
-                  calories: 305,
-                  fat: 3.7,
-                  carbs: 67,
-                  protein: 4.3,
-                  iron: '8%'
-                },
-                {
-                  name: 'Gingerbread',
-                  calories: 356,
-                  fat: 16.0,
-                  carbs: 49,
-                  protein: 3.9,
-                  iron: '16%'
-                },
-                {
-                  name: 'Jelly bean',
-                  calories: 375,
-                  fat: 0.0,
-                  carbs: 94,
-                  protein: 0.0,
-                  iron: '0%'
-                },
-                {
-                  name: 'Lollipop',
-                  calories: 392,
-                  fat: 0.2,
-                  carbs: 98,
-                  protein: 0,
-                  iron: '2%'
-                },
-                {
-                  name: 'Honeycomb',
-                  calories: 408,
-                  fat: 3.2,
-                  carbs: 87,
-                  protein: 6.5,
-                  iron: '45%'
-                },
-                {
-                  name: 'Donut',
-                  calories: 452,
-                  fat: 25.0,
-                  carbs: 51,
-                  protein: 4.9,
-                  iron: '22%'
-                },
-                {
-                  name: 'KitKat',
-                  calories: 518,
-                  fat: 26.0,
-                  carbs: 65,
-                  protein: 7,
-                  iron: '6%'
-                }
-              ]
-            }
-          }
-        }
+import axios from 'axios';
+export default {
+    data () {
+      return {
+        headers: [
+          {
+            text: 'Nombre'
+          },
+          { text: 'Apellido Paterno', value: 'paterno' },
+          { text: 'Apellido Materno', value: 'materno' },
+          { text: 'Matricula', value: 'matricula' },
+          { text: 'RFID', value: 'rfid' },
+          { text: 'Acciones', value: 'actions' },
+
+
+        ],
+        alumnos: [],
+
+      }
+    }, methods:{
+      getAlumnos(){
+       
+        axios.get('http://localhost:3000/alumno')
+        .then((response) => {
+          this.alumnos = response.data.r
+          console.log(response.data.r)
+        }).then(error => console.log(error));
+      }
+    },
+    created(){
+      this.getAlumnos()
+    }
+  }
 </script>
+
 
 <style>
 

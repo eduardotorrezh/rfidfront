@@ -1,7 +1,7 @@
 <template>
 <v-app>
     <v-content>
-        <h1>Editar profesor</h1>
+        <h1>Nuevo profesor</h1>
         <v-spacer></v-spacer>
             <v-container>
         <v-form  @submit="onSubmit">
@@ -15,7 +15,7 @@
 
 
         <v-btn v-on:click="onSubmit">
-            Editar
+            Crear
         </v-btn>
         <v-btn color="red" :to="{ name: 'pList' }">
             Cancelar
@@ -45,9 +45,7 @@ import swal from 'sweetalert'
         },
         methods: {
             onSubmit() {
-                const idroute = this.$route.params.profid
                 const dataq = { 
-                    id: idroute,
                     nombre: this.form.nombre,
                     apellido_paterno: this.form.apellido_paterno,
                     apellido_materno: this.form.apellido_materno,
@@ -55,33 +53,13 @@ import swal from 'sweetalert'
                     }
                  console.log(dataq)
 
-                const path = 'http://localhost:3000/profesorUpdate'
+                const path = 'http://localhost:3000/registroProfesor'
                 Axios.post(path,dataq)
                 .then((response) => {
-                    
+                    console.log(response)
                 })
-                swal("Profesor editado correctamente!","","success")
-            },
-            getProfesor(){
-                const idroute = this.$route.params.profid
-                console.log("Esta cosa es lo que tiene el rout.params "+idroute)
-                const dataq = { id_profesor: idroute}
-                const path = 'http://localhost:3000/profesorById'
-                Axios.post(path,dataq
-                ).then((response) => {
-                    console.log(response.data.r[0])
-                    console.log(response.data.r)
-
-                    this.form.nombre = response.data.r[0].nombre
-                    this.form.apellido_paterno = response.data.r[0].apellido_paterno
-                    this.form.apellido_materno = response.data.r[0].apellido_materno
-                    this.form.matricula = response.data.r[0].matricula
-
-                })
+                swal("Profesor creado correctamente!","","success")
             }
-        }, created(){
-            
-            this.getProfesor()
         }
     }
 </script>

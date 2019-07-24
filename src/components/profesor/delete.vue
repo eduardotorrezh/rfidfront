@@ -4,7 +4,7 @@
         <h1>Editar profesor</h1>
         <v-spacer></v-spacer>
             <v-container>
-        <v-form  @submit="onSubmit">
+        <v-form  >
         <v-text-field v-model.trim="form.nombre"  label="Nombre" required></v-text-field>
 
         <v-text-field v-model.trim="form.apellido_paterno"  label="Apellido paterno" required></v-text-field>
@@ -14,8 +14,8 @@
         <v-text-field v-model.trim="form.matricula"  label="Matricula" required></v-text-field>
 
 
-        <v-btn v-on:click="onSubmit">
-            Editar
+        <v-btn v-on:click="deleteprofesor">
+            Eliminar
         </v-btn>
         <v-btn color="red" :to="{ name: 'pList' }">
             Cancelar
@@ -44,23 +44,16 @@ import swal from 'sweetalert'
             }
         },
         methods: {
-            onSubmit() {
-                const idroute = this.$route.params.profid
-                const dataq = { 
-                    id: idroute,
-                    nombre: this.form.nombre,
-                    apellido_paterno: this.form.apellido_paterno,
-                    apellido_materno: this.form.apellido_materno,
-                    matricula: this.form.matricula
-                    }
-                 console.log(dataq)
-
-                const path = 'http://localhost:3000/profesorUpdate'
-                Axios.post(path,dataq)
-                .then((response) => {
-                    
+      deleteprofesor(){
+        const idroute = this.$route.params.profid
+        console.log("Esta cosa es lo que tiene el rout.params "+idroute)
+        const dataq = { id: idroute}
+        const path = 'http://localhost:3000/profesorDelete'
+        Axios.post(path,dataq).then((response) => {
+                console.log(response)
+             swal("Profesor eliminado correctamente!","","success")
+            location.href = '/plist'
                 })
-                swal("Profesor editado correctamente!","","success")
             },
             getProfesor(){
                 const idroute = this.$route.params.profid

@@ -1,7 +1,7 @@
 <template>
 <v-app>
     <v-content>
-        <h1>Editar profesor</h1>
+        <h1>Editar materia</h1>
         <v-spacer></v-spacer>
             <v-container>
         <v-form  @submit="onSubmit">
