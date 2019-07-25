@@ -18,7 +18,7 @@
             <td>{{ props.item.clase }}</td>
             <td >{{ props.item.hora_inicio }}</td>
             <td >{{ props.item.hora_fin }}</td>
-            <td >{{ props.item.id_dia }}</td>
+            <td >{{ dias[props.item.id_dia] }}</td>
           </template>
         </v-data-table>
         <v-btn color="red" :to="{ name: 'hList' }">
@@ -49,6 +49,9 @@ export default {
         //   { text: 'Acciones', value: 'actions' },
 
 
+        ],
+        dias:[
+          'Domingo','Lunes','Martes','Miercoles','Jueves','Viernes'
         ],
         horarios: [],
         alumnoid: this.$route.params.alumnoid
