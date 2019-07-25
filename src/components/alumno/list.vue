@@ -10,7 +10,7 @@
               Listado alumnos</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items>
-                <v-btn color="#FFFF00" text :to="{ name:'pList' }" text>Profesores</v-btn>
+                <v-btn color="#FFFF00" text :to="{ name:'pList' }">Profesores</v-btn>
                 <v-btn color="#FFFF00" text :to="{ name:'aList' }">Alumnos</v-btn>
                 <v-btn color="#FFFF00" text :to="{ name:'asList' }">Materias</v-btn>
                 <v-btn color="#FFFF00" text :to="{ name:'hList' }">Horarios</v-btn>
@@ -36,7 +36,7 @@
 
             <td > <v-btn fab small dark class="ma-2" color="primary" :to="{ name:'aedit', params: {alumnoid: props.item.rfid, ai:props.item.id} }"><v-icon>edit</v-icon>
         
-      </v-btn><v-btn fab small dark class="ma-2"  color="red" :to="{ name:'aldelete', params: {alumnoid: props.item.rfid} }" dark ><v-icon >delete</v-icon> </v-btn></td> 
+      </v-btn><v-btn fab small dark class="ma-2"  color="red" :to="{ name:'aldelete', params: {alumnoid: props.item.rfid} }"><v-icon >delete</v-icon> </v-btn></td> 
           </template>
         </v-data-table>
         <v-btn fab dark class="ma-2" color="green" :to="{ name: 'nalumno' }"  right><v-icon>add</v-icon>
@@ -67,6 +67,7 @@ export default {
 
         ],
         alumnos: [],
+        profesores:[],
         left: true
       }
     }, methods:{
@@ -77,10 +78,19 @@ export default {
           this.alumnos = response.data.r
           console.log(response.data.r)
         }).then(error => console.log(error));
-      }
+       },
+      // getProfesores(){
+      //   axios.get('http://localhost:3000/profesor')
+      //   .then((response2) => {
+      //     this.profesores = response2.data.r
+      //     console.log(response2.data.r)
+      //   }).then(error => console.log(error));
+      // }
+      
     },
     created(){
       this.getAlumnos()
+      // this.getProfesores
     }
   }
 </script>
