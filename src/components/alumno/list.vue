@@ -3,12 +3,22 @@
 
     <v-content>
         <v-toolbar color="#FFFF00">
-            <v-toolbar-title>Listado alumnos</v-toolbar-title>
+            <v-btn class="ma-2" text icon color="white" :to="start">
+                <v-icon>home</v-icon>
+            </v-btn>
+            <v-toolbar-title>
+              Listado alumnos</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-toolbar-items>
+                <v-btn color="#FFFF00" text :to="{ name:'pList' }" text>Profesores</v-btn>
+                <v-btn color="#FFFF00" text :to="{ name:'aList' }">Alumnos</v-btn>
+                <v-btn color="#FFFF00" text :to="{ name:'asList' }">Materias</v-btn>
+                <v-btn color="#FFFF00" text :to="{ name:'hList' }">Horarios</v-btn>
+            </v-toolbar-items>
         </v-toolbar>
         
             <v-spacer></v-spacer>
-            <v-btn fab dark style="margin-left: 80%;" class="ma-2" color="green" :to="{ name: 'nalumno' }" ><v-icon>add</v-icon>
-      </v-btn>
+            
       <v-spacer></v-spacer>
             <v-container>
             <v-data-table
@@ -28,6 +38,8 @@
       </v-btn><v-btn fab small dark class="ma-2"  color="red" :to="{ name:'aldelete', params: {alumnoid: props.item.rfid} }" dark ><v-icon >delete</v-icon> </v-btn></td> 
           </template>
         </v-data-table>
+        <v-btn fab dark class="ma-2" color="green" :to="{ name: 'nalumno' }"  right><v-icon>add</v-icon>
+        </v-btn>
     </v-container>
    
     </v-content>
@@ -54,7 +66,7 @@ export default {
 
         ],
         alumnos: [],
-
+        left: true
       }
     }, methods:{
       getAlumnos(){

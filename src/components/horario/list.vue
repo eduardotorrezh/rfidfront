@@ -3,7 +3,21 @@
 
     <v-content>
         <v-toolbar color="#FFFF00">
-            <v-toolbar-title>Horario por alumno</v-toolbar-title>
+            <v-toolbar-title>
+              <v-btn class="ma-2" color="primary" dark>Home 
+                <v-icon x-large>home</v-icon>
+              </v-btn>
+            </v-toolbar-title>
+            
+            
+            <v-spacer></v-spacer> 
+            <v-toolbar-items>
+                <v-btn color="#FFFF00" text :to="{ name:'pList' }">Profesores</v-btn>
+                <v-btn color="#FFFF00" text :to="{ name:'aList' }">Alumnos</v-btn>
+                <v-btn color="#FFFF00" text :to="{ name:'asList' }">Materias</v-btn>
+                <v-btn color="#FFFF00" text :to="{ name:'hList' }">Horarios</v-btn>
+            </v-toolbar-items>
+           
         </v-toolbar>
         
             <v-spacer></v-spacer>
