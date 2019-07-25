@@ -3,7 +3,7 @@
 
     <v-content>
         <v-toolbar color="#FFFF00">
-            <v-btn class="ma-2" text icon color="white" :to="start">
+            <v-btn class="ma-2" text icon color="white" :to="{ name:'start' }">
                 <v-icon>home</v-icon>
             </v-btn>
             <v-toolbar-title>

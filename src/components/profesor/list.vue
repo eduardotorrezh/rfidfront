@@ -3,6 +3,9 @@
 
     <v-content>
         <v-toolbar color="#FFFF00">
+            <v-btn class="ma-2" text icon color="white" :to="{ name:'start' }">
+                <v-icon>home</v-icon>
+            </v-btn>
             <v-toolbar-title>Listado de profesores</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items>
@@ -30,10 +33,12 @@
       </v-btn><v-btn fab small dark class="ma-2"  color="red" :to="{ name:'dedit', params: {profid: props.item.id} }"  ><v-icon>delete</v-icon> </v-btn></td> 
           </template>
         </v-data-table>
+
+        <v-btn fab dark style="margin-left: 80%;" class="ma-2" color="green" :to="{ name: 'nedit' }" dark>
+            <v-icon>add</v-icon>
+          </v-btn>
     </v-container>
-    <v-btn fab dark style="margin-left: 80%;" class="ma-2" color="green" :to="{ name: 'nedit' }" dark>
-      <v-icon>add</v-icon>
-    </v-btn>
+    
    
     </v-content>
     

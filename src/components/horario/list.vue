@@ -3,10 +3,11 @@
 
     <v-content>
         <v-toolbar color="#FFFF00">
+            <v-btn class="ma-2" text icon color="white" :to="{ name:'start' }">
+                <v-icon>home</v-icon>
+            </v-btn>
             <v-toolbar-title>
-              <v-btn class="ma-2" color="primary" dark>Home 
-                <v-icon x-large>home</v-icon>
-              </v-btn>
+              Horarios
             </v-toolbar-title>
             
             
