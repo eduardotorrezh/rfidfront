@@ -9,7 +9,7 @@
         <v-form  @submit="onSubmit">
         <v-text-field v-model.trim="form.nombre"  label="Nombre" required></v-text-field>
 
-        <v-text-field v-model.trim="form.id_profesor"  label="Id profesor" required></v-text-field>
+        <v-select v-model.trim="form.id_materia" :items="items"  label="Profesor"  ></v-select>
 
 
         <v-btn color= "blue" v-on:click="onSubmit">
@@ -36,7 +36,8 @@ import swal from 'sweetalert'
                 form: {
                     nombre:'',
                     id_profesor: ''
-                }
+                }, 
+                items:[]
             }
         },
         methods: {
@@ -63,8 +64,11 @@ import swal from 'sweetalert'
                 const path = 'http://localhost:3000/materiaById'
                 Axios.post(path,dataq
                 ).then((response) => {
-                    console.log(response.data.r[0])
-                    console.log(response.data.r)
+
+                    var se =[]
+
+                    se = response.data.r
+                    console.log(se)
 
                     this.form.nombre = response.data.r[0].nombre
                     this.form.id_profesor = response.data.r[0].id_profesor

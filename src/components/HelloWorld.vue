@@ -8,6 +8,7 @@
               <v-btn color="#FFFF00" text :to="{ name:'aList' }">Alumnos</v-btn>
               <v-btn color="#FFFF00" text :to="{ name:'asList' }">Materias</v-btn>
               <v-btn color="#FFFF00" text :to="{ name:'hList' }">Horarios</v-btn>
+              <v-btn color="#FFFF00" text :to="{ name:'asist' }">Asistencia</v-btn>
           </v-toolbar-items>
       </v-toolbar>
       <v-container>

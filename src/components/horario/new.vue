@@ -7,9 +7,10 @@
             <v-spacer></v-spacer>
                 <v-container>
             <v-form  @submit="onSubmit">
-            <v-text-field v-model.trim="form.id_alumno"  label="id_alumno" required></v-text-field>
+            <v-text-field v-model.trim="form.id_alumno"  label="id_alumno" disabled></v-text-field>
     
-            <v-text-field v-model.trim="form.id_materia"  label="id_materia" required></v-text-field>
+            <!-- <v-text-field v-model.trim="form.id_materia"  label="id_materia" required></v-text-field> -->
+            <v-select v-model.trim="form.id_materia" :items="items"  label="Materias"  ></v-select>
     
             <!-- <v-text-field v-model.trim="form.apellido_materno"  label="Apellido materno" required></v-text-field>
     
@@ -42,8 +43,14 @@
                         id_materia:'',
                         // apellido_materno:'',
                         // matricula:null
-                    }
+                    },
+                    
+                    items: [],
+                    items2: []
                 }
+            },
+            created(){
+                this.getMateria()
             },
             methods: {
                 onSubmit() {
@@ -60,6 +67,30 @@
                         swal("Materia cargada correctamente!","","success")
                     })
                     
+                },
+                getMateria(){
+                    var se2;
+                    Axios.get('http://localhost:3000/materia')
+                        .then((response) => {
+                            // this.items = response.data.
+                            var se= []
+                            var se2 =[]
+                            var se3 =[]
+                            se = response.data.r
+                            se.forEach((materia)=>{
+                                
+                                // this.items = [materia.id]
+                                se2.push({
+                                    text: materia.nombre,
+                                    value: materia.id
+                                })
+                                
+                            })
+                          
+                             this.items = se2
+                            //  this.items2 = se3
+                            
+                        }).then(error => console.log(error));
                 }
             }
         }
