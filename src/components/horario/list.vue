@@ -2,7 +2,9 @@
     <v-app>
 
     <v-content>
-        <h1>Horarios por alumno</h1>
+        <v-toolbar color="#FFFF00">
+            <v-toolbar-title>Horario por alumno</v-toolbar-title>
+        </v-toolbar>
         
             <v-spacer></v-spacer>
             <v-container>
@@ -17,11 +19,10 @@
             <td >{{ props.item.apellido_materno }}</td>
             <td >{{ props.item.matricula }}</td>
             <td >{{ props.item.rfid }}</td>
-            <td > <v-btn class="ma-2" color="primary" :to="{ name:'halumno', params: {alumnoid: props.item.id} }" dark>Horario
-        <v-icon dark right>check_circle</v-icon>
+            <td > <v-btn fab small dark class="ma-2" color="blue" :to="{ name:'halumno', params: {alumnoid: props.item.id} }" ><v-icon>alarm</v-icon>
       </v-btn>
-      <v-btn class="ma-2" color="green" :to="{ name:'hm', params: {alumnoid: props.item.id} }" dark>Cargar Materia
-        <v-icon dark right>check_circle</v-icon>
+      <v-btn fab small dark class="ma-2" color="green" :to="{ name:'hm', params: {alumnoid: props.item.id} }" ><v-icon>add</v-icon>
+   
       </v-btn>
       </td> 
           </template>

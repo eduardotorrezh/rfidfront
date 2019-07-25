@@ -2,7 +2,9 @@
     <v-app>
 
     <v-content>
-        <h1>Horarios por alumno</h1>
+        <v-toolbar color="#FFFF00">
+            <v-toolbar-title>Horarios del alumno</v-toolbar-title>
+        </v-toolbar>
         
             <v-spacer></v-spacer>
             <v-container>

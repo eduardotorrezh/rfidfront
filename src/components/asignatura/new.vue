@@ -1,7 +1,9 @@
 <template>
 <v-app>
     <v-content>
-        <h1>Nueva Asignatura</h1>
+            <v-toolbar color="#FFFF00">
+                    <v-toolbar-title>Nueva asignatura</v-toolbar-title>
+                </v-toolbar>
         <v-spacer></v-spacer>
             <v-container>
         <v-form  @submit="onSubmit">
@@ -14,7 +16,7 @@
         <v-text-field v-model.trim="form.matricula"  label="Matricula" required></v-text-field> -->
 
 
-        <v-btn v-on:click="onSubmit">
+        <v-btn color="blue" v-on:click="onSubmit">
             Crear
         </v-btn>
         <v-btn color="red" :to="{ name: 'asList' }">
@@ -55,7 +57,7 @@ import swal from 'sweetalert'
                 Axios.post(path,dataq)
                 .then((response) => {
                     console.log(response)
-                    swal("Profesor creado correctamente!","","success")
+                    swal("Materia creada correctamente!","","success")
                 })
                 
             }

@@ -2,11 +2,13 @@
     <v-app>
 
     <v-content>
-        <h1>Listado de profesores</h1>
+        <v-toolbar color="#FFFF00">
+            <v-toolbar-title>Listado de profesores</v-toolbar-title>
+        </v-toolbar>
         
             <v-spacer></v-spacer>
-            <v-btn style="margin-left: 80%;" class="ma-2" color="green" :to="{ name: 'nedit' }" dark>Crear Profesor
-        <v-icon dark>backup</v-icon>
+            <v-btn fab dark style="margin-left: 80%;" class="ma-2" color="green" :to="{ name: 'nedit' }" dark>
+        <v-icon>add</v-icon>
       </v-btn>
       <v-spacer></v-spacer>
             <v-container>
@@ -20,9 +22,8 @@
             <td >{{ props.item.apellido_paterno }}</td>
             <td >{{ props.item.apellido_materno }}</td>
             <td >{{ props.item.matricula }}</td>
-            <td > <v-btn class="ma-2" color="primary" :to="{ name:'pedit', params: {profid: props.item.id} }" dark>Editar
-        <v-icon dark right>check_circle</v-icon>
-      </v-btn><v-btn class="ma-2"  color="red" :to="{ name:'dedit', params: {profid: props.item.id} }" dark >Eliminar <v-icon dark right>block</v-icon> </v-btn></td> 
+            <td > <v-btn fab small dark class="ma-2" color="primary" :to="{ name:'pedit', params: {profid: props.item.id} }" ><v-icon>edit</v-icon>
+      </v-btn><v-btn fab small dark class="ma-2"  color="red" :to="{ name:'dedit', params: {profid: props.item.id} }"  ><v-icon>delete</v-icon> </v-btn></td> 
           </template>
         </v-data-table>
     </v-container>

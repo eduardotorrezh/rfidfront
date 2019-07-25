@@ -1,7 +1,9 @@
 <template>
 <v-app>
     <v-content>
-        <h1>Editar profesor</h1>
+        <v-toolbar color="#FFFF00">
+                <v-toolbar-title>Eliminar profesor</v-toolbar-title>
+            </v-toolbar>
         <v-spacer></v-spacer>
             <v-container>
         <v-form  >
@@ -14,10 +16,10 @@
         <v-text-field v-model.trim="form.matricula"  label="Matricula" required></v-text-field>
 
 
-        <v-btn v-on:click="deleteprofesor">
+        <v-btn color="red" v-on:click="deleteprofesor">
             Eliminar
         </v-btn>
-        <v-btn color="red" :to="{ name: 'pList' }">
+        <v-btn color="blue" :to="{ name: 'pList' }">
             Cancelar
         </v-btn>
 

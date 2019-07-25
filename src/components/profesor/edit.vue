@@ -1,7 +1,9 @@
 <template>
 <v-app>
     <v-content>
-        <h1>Editar profesor</h1>
+            <v-toolbar color="#FFFF00">
+                <v-toolbar-title>Editar profesor</v-toolbar-title>
+            </v-toolbar>
         <v-spacer></v-spacer>
             <v-container>
         <v-form  @submit="onSubmit">
@@ -14,7 +16,7 @@
         <v-text-field v-model.trim="form.matricula"  label="Matricula" required></v-text-field>
 
 
-        <v-btn v-on:click="onSubmit">
+        <v-btn color="blue" v-on:click="onSubmit">
             Editar
         </v-btn>
         <v-btn color="red" :to="{ name: 'pList' }">

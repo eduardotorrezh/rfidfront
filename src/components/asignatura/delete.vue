@@ -1,7 +1,9 @@
 <template>
     <v-app>
         <v-content>
-            <h1>Eliminar materia</h1>
+                <v-toolbar color="#FFFF00">
+                        <v-toolbar-title>Eliminar materia</v-toolbar-title>
+                    </v-toolbar>
             <v-spacer></v-spacer>
                 <v-container>
             <v-form  >
@@ -11,10 +13,10 @@
     
     
     
-            <v-btn v-on:click="deleteMateria">
+            <v-btn color="red" v-on:click="deleteMateria">
                 Eliminar
             </v-btn>
-            <v-btn color="red" :to="{ name: 'asList' }">
+            <v-btn color="blue" :to="{ name: 'asList' }">
                 Cancelar
             </v-btn>
     

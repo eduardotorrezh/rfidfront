@@ -1,7 +1,9 @@
 <template>
 <v-app>
     <v-content>
-        <h1>Eliminar alumno</h1>
+            <v-toolbar color="#FFFF00">
+                    <v-toolbar-title>Eliminar alumno</v-toolbar-title>
+                </v-toolbar>
         <v-spacer></v-spacer>
             <v-container>
         <v-form  >
@@ -17,10 +19,10 @@
 
 
 
-        <v-btn v-on:click="deleteAlumno">
+        <v-btn color="red" v-on:click="deleteAlumno">
             Eliminar
         </v-btn>
-        <v-btn color="red" :to="{ name: 'aList' }">
+        <v-btn color="blue" :to="{ name: 'aList' }">
             Cancelar
         </v-btn>
 
@@ -55,7 +57,7 @@ import swal from 'sweetalert'
         const path = 'http://localhost:3000/alumnoDelete'
         Axios.post(path,dataq).then((response) => {
                 console.log(response)
-             swal("Profesor eliminado correctamente!","","success")
+             swal("Alumno eliminado correctamente!","","success")
             location.href = '/alist'
                 })
             },

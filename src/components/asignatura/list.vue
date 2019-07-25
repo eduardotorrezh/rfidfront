@@ -1,10 +1,12 @@
 <template>
     <v-app>
     <v-content>
-        <h1>Listado de materias</h1>
+        <v-toolbar color="#FFFF00">
+            <v-toolbar-title>Listado de materias</v-toolbar-title>
+        </v-toolbar>
             <v-spacer></v-spacer>
-            <v-btn style="margin-left: 80%;" class="ma-2" color="green" :to="{ name: 'matnew' }" dark>Crear Materia
-        <v-icon dark>backup</v-icon>
+            <v-btn fab dark style="margin-left: 80%;" class="ma-2" color="green" :to="{ name: 'matnew' }" ><v-icon>add</v-icon>
+        
       </v-btn>
       <v-spacer></v-spacer>
             <v-container>
@@ -16,9 +18,9 @@
           <template v-slot:items="props">
             <td>{{ props.item.nombre }}</td>
             <td >{{ props.item.id_profesor }}</td>
-            <td > <v-btn class="ma-2" color="primary" dark  :to="{ name:'maedit', params: {materiaid: props.item.id} }">Editar
-        <v-icon dark right>check_circle</v-icon>
-      </v-btn><v-btn class="ma-2" color="red" dark :to="{ name:'madel', params: {materiaid: props.item.id} }">Eliminar<v-icon dark right>block</v-icon> </v-btn></td> 
+            <td > <v-btn fab small dark class="ma-2" color="blue"   :to="{ name:'maedit', params: {materiaid: props.item.id} }"><v-icon>edit</v-icon>
+        
+      </v-btn><v-btn fab small dark class="ma-2" color="red"  :to="{ name:'madel', params: {materiaid: props.item.id} }"><v-icon>delete</v-icon></v-btn></td> 
           </template>
         </v-data-table>
     </v-container>

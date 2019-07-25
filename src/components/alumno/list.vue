@@ -2,11 +2,12 @@
     <v-app>
 
     <v-content>
-        <h1>Listado de alumnos</h1>
+        <v-toolbar color="#FFFF00">
+            <v-toolbar-title>Listado alumnos</v-toolbar-title>
+        </v-toolbar>
         
             <v-spacer></v-spacer>
-            <v-btn style="margin-left: 80%;" class="ma-2" color="green" :to="{ name: 'nalumno' }" dark>Crear Alumno
-        <v-icon dark>backup</v-icon>
+            <v-btn fab dark style="margin-left: 80%;" class="ma-2" color="green" :to="{ name: 'nalumno' }" ><v-icon>add</v-icon>
       </v-btn>
       <v-spacer></v-spacer>
             <v-container>
@@ -22,9 +23,9 @@
             <td >{{ props.item.matricula }}</td>
             <td >{{ props.item.rfid }}</td>
 
-            <td > <v-btn class="ma-2" color="primary" :to="{ name:'aedit', params: {alumnoid: props.item.rfid, ai:props.item.id} }" dark>Editar
-        <v-icon dark right>check_circle</v-icon>
-      </v-btn><v-btn class="ma-2"  color="red" :to="{ name:'aldelete', params: {alumnoid: props.item.rfid} }" dark >Eliminar <v-icon dark right>block</v-icon> </v-btn></td> 
+            <td > <v-btn fab small dark class="ma-2" color="primary" :to="{ name:'aedit', params: {alumnoid: props.item.rfid, ai:props.item.id} }"><v-icon>edit</v-icon>
+        
+      </v-btn><v-btn fab small dark class="ma-2"  color="red" :to="{ name:'aldelete', params: {alumnoid: props.item.rfid} }" dark ><v-icon >delete</v-icon> </v-btn></td> 
           </template>
         </v-data-table>
     </v-container>
