@@ -13,19 +13,24 @@
                         <v-btn color="#FFFF00" text :to="{ name:'aList' }">Alumnos</v-btn>
                         <v-btn color="#FFFF00" text :to="{ name:'asList' }">Materias</v-btn>
                         <v-btn color="#FFFF00" text :to="{ name:'hList' }">Horarios</v-btn>
-                        <v-btn color="#FFFF00" text :to="{ name:'asis' }">Asistencia</v-btn>
+                        <v-btn color="#FFFF00" text :to="{ name:'asist' }">Asistencia</v-btn>
                 </v-toolbar-items>
             </v-toolbar>
 
             <v-spacer></v-spacer>
             <v-container>
-                <v-data-table :headers="headers" :items="asistencia" class="elevation-1">
+                <v-data-table :headers="headers" :items="alumnos" class="elevation-1">
                     <template v-slot:items="props">
-                        <td>{{ props.item.id }}</td>
-                        <td>{{ props.item.id_alumno }}</td>
-                        <td>{{ props.item.id.relacion }}</td>
-                        <td>{{ props.item.fecha }}</td>
-                        <td>{{ props.item.asis }}</td>
+                        <td>{{ props.item.nombre }}</td>
+                        <td >{{ props.item.apellido_paterno }}</td>
+                        <td >{{ props.item.apellido_materno }}</td>
+                        <td >{{ props.item.matricula }}</td>
+                        <td >{{ props.item.rfid }}</td>
+                        <td>
+                            <v-btn fab small dark class="ma-2" color="primary" :to="{ name:'asistal', params: {alumnoid: props.item.id, alumnoN:props.item.nombre} }">
+                                <v-icon>assignment</v-icon>
+                            </v-btn>
+                        </td>
                     </template>
                 </v-data-table>
                 
@@ -45,31 +50,30 @@
             return {
                 headers: [
                     {
-                        text: 'id'
+                        text: 'Nombre'
                     },
-                    { text: 'id_alumno', value: 'id_alumno' },
-                    { text: 'id_relacion', value: 'id_relacion' },
-                    { text: 'fecha', value: 'fecha' },
-                    { text: 'asistencia', value: 'asis' },
-                    //   { text: 'Acciones', value: 'actions' },
-
+                    { text: 'Apellido Paterno', value: 'paterno' },
+                    { text: 'Apellido Materno', value: 'materno' },
+                    { text: 'Matricula', value: 'matricula' },
+                    { text: 'RFID', value: 'rfid' },
+                    { text: 'Acciones', value: 'actions' },
 
                 ],
-                asistencia: [],
+                alumnos: [],
                 
 
             }
         }, methods: {
-            getAsist() {
-                Axios.post('http://localhost:3000/asistencia')
+            getAlumno() {
+                Axios.get('http://localhost:3000/alumno')
                     .then((response) => {
-                        this.asistencia = response.data.r
+                        this.alumnos = response.data.r
                         console.log(response.data.r)
                     }).then(error => console.log(error));
             }
         },
         created() {
-            this.getAsist()
+            this.getAlumno()
         }
     }
 </script>

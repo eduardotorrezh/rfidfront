@@ -22,7 +22,8 @@ import hw from '@/components/HelloWorld'
 import pform from '@/components/profesor/form'
 
 import hM from '@/components/horario/new'
-import asis from '@/components/asistencia/asistencia'
+import asist from '@/components/asistencia/list'
+import asistal from '@/components/asistencia/asist'
 
 Vue.use(Router)
 
@@ -36,8 +37,13 @@ const router = new Router({
       },
       {
         path: '/asistencia',
-        name: 'asis',
-        component: asis,
+        name: 'asist',
+        component: asist,
+      },
+      {
+        path: '/asistencia/:alumnoid/',
+        name: 'asistal',
+        component: asistal,
       },
       {
         path: '/pform',
