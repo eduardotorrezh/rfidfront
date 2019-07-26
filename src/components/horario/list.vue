@@ -37,7 +37,7 @@
             <td >{{ props.item.rfid }}</td>
             <td > <v-btn fab small dark class="ma-2" color="blue" :to="{ name:'halumno', params: {alumnoid: props.item.id} }" ><v-icon>alarm</v-icon>
       </v-btn>
-      <v-btn fab small dark class="ma-2" color="green" :to="{ name:'hm', params: {alumnoid: props.item.id} }" ><v-icon>add</v-icon>
+      <v-btn fab small dark class="ma-2" color="green" :to="{ name:'hm', params: {alumnoid: props.item.rfid} }" ><v-icon>add</v-icon>
    
       </v-btn>
       </td> 
@@ -58,10 +58,10 @@ export default {
       return {
         headers: [
           {
-            text: 'Nombre'
+            text: 'Nombre', value: 'nombre'
           },
-          { text: 'Apellido Paterno', value: 'paterno' },
-          { text: 'Apellido Materno', value: 'materno' },
+          { text: 'Apellido Paterno', value: 'apellido_paterno' },
+          { text: 'Apellido Materno', value: 'apellido_materno' },
           { text: 'Matricula', value: 'matricula' },
           { text: 'RFID', value: 'rfid' },
           { text: 'Acciones', value: 'actions' },
@@ -71,7 +71,10 @@ export default {
         alumnos: [],
 
       }
-    }, methods:{
+    }, created(){
+      this.getAlumnos()
+    },
+     methods:{
       getAlumnos(){
        
         axios.get('http://localhost:3000/alumno')
@@ -90,9 +93,6 @@ export default {
       //           })
       //       }
     },
-    created(){
-      this.getAlumnos()
-    }
   }
 </script>
 

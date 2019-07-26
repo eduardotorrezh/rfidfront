@@ -53,7 +53,7 @@ export default {
           {
             text: 'Nombre'
           },
-          { text: 'id_profesor', value: 'paterno' },
+          { text: 'Profesor', value: 'paterno' },
           { text: 'Acciones', value: 'actions' },
 
 
@@ -70,18 +70,10 @@ export default {
           console.log(response.data.r)
         }).then(error => console.log(error));
       },
-      getProfesores(){
-        axios.get('http://localhost:3000/profesor')
-        .then((response) => {
-          this.profesores = response.data.r
-          console.log(response.data.r)
-        }).then(error => console.log(error));
-      }
-      
     },
     created(){
       this.getMateria()
-      this.getProfesores()
+      
     }
   }
 </script>

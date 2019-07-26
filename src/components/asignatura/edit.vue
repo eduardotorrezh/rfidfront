@@ -9,7 +9,7 @@
         <v-form  @submit="onSubmit">
         <v-text-field v-model.trim="form.nombre"  label="Nombre" required></v-text-field>
 
-        <v-select v-model.trim="form.id_materia" :items="items"  label="Profesor"  ></v-select>
+        <v-select v-model.trim="form.id_profesor" :items="items"  label="profesor"  ></v-select>
 
 
         <v-btn color= "blue" v-on:click="onSubmit">
@@ -32,7 +32,7 @@ import swal from 'sweetalert'
     export default {
         data(){
             return{
-                // profid: this.$route.params.profesorid,
+                idroute: this.$route.params.materiaid,
                 form: {
                     nombre:'',
                     id_profesor: ''
@@ -42,9 +42,9 @@ import swal from 'sweetalert'
         },
         methods: {
             onSubmit() {
-                const idroute = this.$route.params.materiaid
+                
                 const dataq = { 
-                    id: idroute,
+                    id: this.idroute,
                     nombre : this.form.nombre,
                     id_profesor: this.form.id_profesor
                 }
@@ -55,30 +55,43 @@ import swal from 'sweetalert'
                 .then((response) => {
                     console.log(response)
                 })
-                swal("Matria editada correctamente!","","success")
+                swal("Materia editada correctamente!","","success")
+            },
+            getProfesores() {
+                Axios.get('http://localhost:3000/profesor')
+                    .then((response) => {
+                        
+                        var se =[]
+                        var se2 = []
+                        se = response.data.r
+
+                        se.forEach((profe)=>{
+                            se2.push({
+                                text: profe.nombre + " " + profe.apellido_paterno + " " +profe.apellido_materno,
+                                value: profe.id
+                            })
+                        })
+                        this.items = se2
+                    }).then(error => console.log(error));
             },
             getMateria(){
-                const idroute = this.$route.params.materiaid
-                console.log("Esta cosa es lo que tiene el rout.params "+idroute)
-                const dataq = { id_materia: idroute}
+                
+                console.log("Esta cosa es lo que tiene el rout.params "+this.idroute)
+                const dataq = { id_materia: this.idroute}
                 const path = 'http://localhost:3000/materiaById'
                 Axios.post(path,dataq
                 ).then((response) => {
 
-                    var se =[]
-
-                    se = response.data.r
-                    console.log(se)
+                    // console.log(se)
 
                     this.form.nombre = response.data.r[0].nombre
-                    this.form.id_profesor = response.data.r[0].id_profesor
-                  
-
+                   
                 })
             }
         }, created(){
             
             this.getMateria()
+            this.getProfesores()
         }
     }
 </script>

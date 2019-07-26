@@ -7,7 +7,7 @@
             <v-spacer></v-spacer>
                 <v-container>
             <v-form  @submit="onSubmit">
-            <v-text-field v-model.trim="form.id_alumno"  label="id_alumno" disabled></v-text-field>
+            <v-text-field v-model.trim="form.nombre"  label="Nombre del alumno"  :value="form.id_alumno" disabled></v-text-field>
     
             <!-- <v-text-field v-model.trim="form.id_materia"  label="id_materia" required></v-text-field> -->
             <v-select v-model.trim="form.id_materia" :items="items"  label="Materias"  ></v-select>
@@ -37,20 +37,21 @@
         export default {
             data(){
                 return{
-                    // profid: this.$route.params.profesorid,
+                    alumid: this.$route.params.alumnoid,
                     form: {
-                        id_alumno: this.$route.params.alumnoid,
+                        nombre: '',
+                        id_alumno: this.alumid,
                         id_materia:'',
                         // apellido_materno:'',
                         // matricula:null
                     },
                     
                     items: [],
-                    items2: []
                 }
             },
             created(){
                 this.getMateria()
+                this.getAlumno()
             },
             methods: {
                 onSubmit() {
@@ -75,7 +76,7 @@
                             // this.items = response.data.
                             var se= []
                             var se2 =[]
-                            var se3 =[]
+                          
                             se = response.data.r
                             se.forEach((materia)=>{
                                 
@@ -91,6 +92,20 @@
                             //  this.items2 = se3
                             
                         }).then(error => console.log(error));
+                },
+                getAlumno() {
+                    const idroute = this.alumid
+                    console.log("Esta cosa es lo que tiene el rout.params " + idroute)
+
+                    const dataq = { rfid: idroute }
+                    const path = 'http://localhost:3000/alumnoByRfid'
+                    Axios.post(path, dataq
+                    ).then((response) => {
+                        console.log(response.data.r[0])
+
+                        this.form.id_alumno = response.data.r[0].id
+                        this.form.nombre =response.data.r[0].nombre
+                    })
                 }
             }
         }
