@@ -7,13 +7,13 @@
         <v-spacer></v-spacer>
             <v-container>
         <v-form  >
-        <v-text-field v-model.trim="form.nombre"  label="Nombre" required></v-text-field>
+        <v-text-field v-model.trim="form.nombre"  label="Nombre" required disabled></v-text-field>
 
-        <v-text-field v-model.trim="form.apellido_paterno"  label="Apellido paterno" required></v-text-field>
+        <v-text-field v-model.trim="form.apellido_paterno"  label="Apellido paterno" required disabled></v-text-field>
 
-        <v-text-field v-model.trim="form.apellido_materno"  label="Apellido materno" required></v-text-field>
+        <v-text-field v-model.trim="form.apellido_materno"  label="Apellido materno" required disabled></v-text-field>
 
-        <v-text-field v-model.trim="form.matricula"  label="Matricula" required></v-text-field>
+        <v-text-field v-model.trim="form.matricula"  label="Matricula" required disabled></v-text-field>
 
 
         <v-btn color="red" v-on:click="deleteprofesor">

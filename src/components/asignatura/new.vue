@@ -9,7 +9,7 @@
         <v-form  @submit="onSubmit">
         <v-text-field v-model.trim="form.nombre"  label="Nombre" required></v-text-field>
 
-        <v-text-field v-model.trim="form.id_profesor"  label="Id_Profesor" required></v-text-field>
+        <v-select v-model.trim="form.id_profesor" :items="items"  label="Profesor"  ></v-select>
 
         <!-- <v-text-field v-model.trim="form.apellido_materno"  label="Apellido materno" required></v-text-field>
 
@@ -36,14 +36,18 @@ import swal from 'sweetalert'
     export default {
         data(){
             return{
-                profid: this.$route.params.profesorid,
+
                 form: {
                     nombre:'',
                     id_profesor:'',
                     // apellido_materno:'',
                     // matricula:null
-                }
+                },
+                items: []
             }
+        },
+        created(){
+            this.getProfesores()
         },
         methods: {
             onSubmit() {
@@ -60,6 +64,23 @@ import swal from 'sweetalert'
                     swal("Materia creada correctamente!","","success")
                 })
                 
+            },
+            getProfesores() {
+                Axios.get('http://localhost:3000/profesor')
+                    .then((response) => {
+                        
+                        var se =[]
+                        var se2 = []
+                        se = response.data.r
+
+                        se.forEach((profe)=>{
+                            se2.push({
+                                text: profe.nombre + " " + profe.apellido_paterno + " " +profe.apellido_materno,
+                                value: profe.id
+                            })
+                        })
+                        this.items = se2
+                    }).then(error => console.log(error));
             }
         }
     }

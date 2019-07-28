@@ -7,9 +7,9 @@
             <v-spacer></v-spacer>
                 <v-container>
             <v-form  >
-                <v-text-field v-model.trim="form.nombre"  label="Nombre" required></v-text-field>
+                <v-text-field v-model.trim="form.nombre"  label="Nombre" required disabled></v-text-field>
 
-                <v-text-field v-model.trim="form.id_profesor"  label="Id profesor" required></v-text-field>
+                <v-text-field v-model.trim="form.id_profesor"  label="Id profesor" required disabled></v-text-field>
     
     
     

@@ -9,7 +9,7 @@
         <v-form  @submit="onSubmit">
         <v-text-field v-model.trim="form.nombre"  label="Nombre" required></v-text-field>
 
-        <v-select v-model.trim="form.id_profesor" :items="items"  label="profesor"  ></v-select>
+        <v-select v-model.trim="form.id_profesor" :items="items"  label="Profesor"  ></v-select>
 
 
         <v-btn color= "blue" v-on:click="onSubmit">
