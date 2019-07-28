@@ -62,7 +62,9 @@ import swal from 'sweetalert'
                 .then((response) => {
                     
                 })
-                swal("Profesor editado correctamente!","","success")
+                swal("Profesor editado correctamente!","","success").then((value)=>{
+                    //aqui va el redireccionamiento
+                });
             },
             getProfesor(){
                 const idroute = this.$route.params.profid

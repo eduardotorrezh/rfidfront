@@ -15,7 +15,7 @@
 
         <v-text-field v-model.trim="form.matricula"  label="Matricula" required></v-text-field>
                 
-        <v-text-field v-model.trim="form.rfid"  label="RFID" required></v-text-field>
+        <v-text-field v-model.trim="form.rfid"  label="RFID" required disabled="true"></v-text-field>
 
 
 
@@ -33,9 +33,12 @@
     
 </template>
 
+<script src="/socket.io/socket.io.js"></script>
 <script>
 import Axios from 'axios';
+//import io from 'socket.io';
 import swal from 'sweetalert'
+    //const socket = io('http://localhost:3000');
     export default {
         data(){
             return{
@@ -66,7 +69,10 @@ import swal from 'sweetalert'
                     console.log(response.data)
                     swal("Alumno creado correctamente!","","success")
                 })
-            }
+            },
+            //socketMessage(){
+            //    socket.on('registro');
+            //}
         }
     }
 </script>
