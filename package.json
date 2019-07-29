@@ -10,9 +10,13 @@
   "dependencies": {
     "axios": "^0.19.0",
     "core-js": "^2.6.5",
+    "socket.io": "^2.2.0",
     "sweetalert": "^2.1.2",
+    "uWebSockets.js": "github:uNetworking/uWebSockets.js#v15.11.0",
+    "uws": "^100.0.1",
     "vue": "^2.6.10",
     "vue-router": "^3.0.7",
+    "vue-socket.io": "^3.0.7",
     "vuetify": "^1.5.16"
   },
   "devDependencies": {
