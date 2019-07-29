@@ -61,7 +61,9 @@ import swal from 'sweetalert'
                 Axios.post(path,dataq)
                 .then((response) => {
                     console.log(response)
-                    swal("Materia creada correctamente!","","success")
+                    swal("Materia creada correctamente!","","success").then(()=>{
+                        location.href = '/aslist'
+                    })
                 })
                 
             },

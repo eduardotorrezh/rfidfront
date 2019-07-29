@@ -15,7 +15,7 @@
 
         <v-text-field v-model.trim="form.matricula"  label="Matricula" required></v-text-field>
                 
-        <v-text-field v-model.trim="form.rfid"  label="RFID" required></v-text-field>
+        <v-text-field v-model.trim="form.rfid"  label="RFID" required disabled></v-text-field>
 
 
 
@@ -73,7 +73,9 @@ import swal from 'sweetalert'
                 .then((response) => {
                     
                 })
-                swal("Alumnno editado correctamente!","","success")
+                swal("Alumnno editado correctamente!","","success").then(()=>{
+                    location.href = '/alist'
+                })
             },
             getAlumno(){
                 const idroute = this.$route.params.alumnoid

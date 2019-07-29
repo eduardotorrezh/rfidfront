@@ -65,7 +65,9 @@
                     Axios.post(path,dataq)
                     .then((response) => {
                         console.log(response)
-                        swal("Materia cargada correctamente!","","success")
+                        swal("Materia cargada correctamente!","","success").then(()=>{
+                            location.href = '/hlist'
+                        })
                     })
                     
                 },
