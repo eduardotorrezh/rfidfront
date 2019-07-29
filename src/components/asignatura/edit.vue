@@ -55,7 +55,9 @@ import swal from 'sweetalert'
                 .then((response) => {
                     console.log(response)
                 })
-                swal("Materia editada correctamente!","","success")
+                swal("Materia editada correctamente!","","success").then(()=>{
+                    location.href = '/aslist'
+                })
             },
             getProfesores() {
                 Axios.get('http://localhost:3000/profesor')

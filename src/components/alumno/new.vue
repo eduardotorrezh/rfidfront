@@ -11,11 +11,15 @@
 
         <v-text-field v-model.trim="form.apellido_paterno"  label="Apellido paterno" required></v-text-field>
 
-        <v-text-field v-model.trim="form.apellido_materno"  label="Apellido materno" required></v-text-field>
+        <v-text-field v-model.trim="form.apellidSo_materno"  label="Apellido materno" required></v-text-field>
 
         <v-text-field v-model.trim="form.matricula"  label="Matricula" required></v-text-field>
                 
+<<<<<<< HEAD
         <v-text-field v-model.trim="form.rfid"  label="RFID" required disabled></v-text-field>
+=======
+        <v-text-field v-model.trim="form.rfid"  label="RFID" required   ></v-text-field>
+>>>>>>> e0f4489ba3ed7254224918f4d55986f4a35f39c7
 
 
 
@@ -70,7 +74,9 @@ const io = require('socket.io-client')
                 Axios.post(path,dataq)
                 .then((response) => {
                     console.log(response.data)
-                    swal("Alumno creado correctamente!","","success")
+                    swal("Alumno creado correctamente!","","success").then(()=>{
+                        location.href = '/alist'
+                    })
                 })
             }
             

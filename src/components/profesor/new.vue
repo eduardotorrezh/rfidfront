@@ -60,7 +60,9 @@ import swal from 'sweetalert'
                 .then((response) => {
                     console.log(response)
                 })
-                swal("Profesor creado correctamente!","","success")
+                swal("Profesor creado correctamente!","","success").then(()=>{
+                    location.href = '/plist'
+                })
             }
         }
     }
