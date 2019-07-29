@@ -29,7 +29,7 @@
             <td > <v-btn fab small dark class="ma-2" color="blue"   :to="{ name:'maedit', params: {materiaid: props.item.id} }">
               <v-icon>edit</v-icon>   
             </v-btn>
-            <v-btn fab small dark class="ma-2" color="red"  :to="{ name:'madel', params: {materiaid: props.item.id} }">
+            <v-btn fab small dark class="ma-2" color="red"  v-on:click="deleteAlumno(props.item.id)">
               <v-icon>delete</v-icon>
               </v-btn></td> 
           </template>
@@ -70,6 +70,17 @@ export default {
           console.log(response.data.r)
         }).then(error => console.log(error));
       },
+      deleteAlumno(x){
+        console.log(x)
+        const dataq = { id: x}
+        const path = 'http://localhost:3000/materiaDelete'
+        axios.post(path,dataq).then((response) => {
+                console.log(response)
+             swal("Alumno eliminado correctamente!","","success").then(()=>{
+                    location.href = '/aslist'
+                })
+                })
+            }
     },
     created(){
       this.getMateria()

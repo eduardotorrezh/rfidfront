@@ -35,7 +35,7 @@
                 <v-icon>edit</v-icon>
 
               </v-btn>
-              <v-btn fab small dark class="ma-2" color="red" :to="{ name:'aldelete', params: {alumnoid: props.item.rfid} }">
+              <v-btn fab small dark class="ma-2" color="red" v-on:click="deleteAlumno(props.item.rfid)">
                 <v-icon>delete</v-icon>
               </v-btn>
             </td>
@@ -81,14 +81,17 @@
             console.log(response.data.r)
           }).then(error => console.log(error));
       },
-      // getProfesores(){
-      //   axios.get('http://localhost:3000/profesor')
-      //   .then((response2) => {
-      //     this.profesores = response2.data.r
-      //     console.log(response2.data.r)
-      //   }).then(error => console.log(error));
-      // }
-
+      deleteAlumno(x){
+        console.log(x)
+        const dataq = { rfid: x}
+        const path = 'http://localhost:3000/alumnoDelete'
+        axios.post(path,dataq).then((response) => {
+                console.log(response)
+             swal("Alumno eliminado correctamente!","","success").then(()=>{
+                    location.href = '/alist'
+                })
+                })
+            }
     },
     created() {
       this.getAlumnos()

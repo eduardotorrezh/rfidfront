@@ -11,7 +11,7 @@
 
         <v-text-field v-model.trim="form.apellido_paterno"  label="Apellido paterno" required></v-text-field>
 
-        <v-text-field v-model.trim="form.apellidSo_materno"  label="Apellido materno" required></v-text-field>
+        <v-text-field v-model.trim="form.apellido_materno"  label="Apellido materno" required></v-text-field>
 
         <v-text-field v-model.trim="form.matricula"  label="Matricula" required></v-text-field>
                 
@@ -37,11 +37,12 @@
 import Axios from 'axios';
 import VueSocketIO from 'vue-socket.io';
 import swal from 'sweetalert'
-const io = require('socket.io-client')
-    const socket = io('http://192.168.1.72:3000');
-                    socket.on('registro',function(data){
-                    console.log(data)
-                    });
+// const io = require('socket.io-client')
+//     const socket = io('http://192.168.1.72:3000');
+//                     socket.on('registro',function(data){
+//                     console.log(data)
+
+//                     });
     export default {
         data(){
             return{
@@ -74,8 +75,17 @@ const io = require('socket.io-client')
                         location.href = '/alist'
                     })
                 })
+            }, 
+            socketRFID(){
+                const io = require('socket.io-client')
+                const socket = io('http://192.168.1.72:3000');
+                    socket.on('registro',function(data){
+                    console.log(data)
+                    this.form.rfid = data
+                    });
             }
-            
+        }, created(){
+            this.socketRFID()
         }
     }
 </script>
