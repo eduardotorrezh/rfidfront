@@ -33,9 +33,8 @@
             <td>
               <v-btn fab small dark class="ma-2" color="primary" :to="{ name:'aedit', params: {alumnoid: props.item.rfid, ai:props.item.id} }">
                 <v-icon>edit</v-icon>
-
               </v-btn>
-              <v-btn fab small dark class="ma-2" color="red" :to="{ name:'aldelete', params: {alumnoid: props.item.rfid} }">
+              <v-btn fab small dark class="ma-2" color="red" @click="deleteItem">
                 <v-icon>delete</v-icon>
               </v-btn>
             </td>
@@ -57,6 +56,7 @@
   export default {
     data() {
       return {
+        select:[],
         headers: [
           {
             text: 'Nombre'
@@ -74,7 +74,6 @@
       }
     }, methods: {
       getAlumnos() {
-
         axios.get('http://localhost:3000/alumno')
           .then((response) => {
             this.alumnos = response.data.r
@@ -88,8 +87,16 @@
       //     console.log(response2.data.r)
       //   }).then(error => console.log(error));
       // }
-
+      deleteItem () {
+      if(confirm('Are you sure you want to delete this item?')){
+      for(var i = 0; i <this.selected.length; i++){
+      const index = this.alumnos.indexOf(this.selected[i]);
+      this.alumnos.splice(index, 1);
+  }
+    }
+   }
     },
+    
     created() {
       this.getAlumnos()
       // this.getProfesores
