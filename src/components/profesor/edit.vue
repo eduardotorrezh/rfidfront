@@ -62,8 +62,9 @@ import swal from 'sweetalert'
                 .then((response) => {
                     
                 })
-                swal("Profesor editado correctamente!","","success").then((value)=>{
+                swal("Profesor editado correctamente!","","success").then(()=>{
                     //aqui va el redireccionamiento
+                    location.href = '/plist'
                 });
             },
             getProfesor(){
