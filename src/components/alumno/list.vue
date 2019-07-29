@@ -75,7 +75,7 @@
     }, methods: {
       getAlumnos() {
 
-        axios.get('http://localhost:3000/alumno')
+        axios.get('http://192.168.1.72:3000/alumno')
           .then((response) => {
             this.alumnos = response.data.r
             console.log(response.data.r)
@@ -84,7 +84,7 @@
       deleteAlumno(x){
         console.log(x)
         const dataq = { rfid: x}
-        const path = 'http://localhost:3000/alumnoDelete'
+        const path = 'http://192.168.1.72:3000/alumnoDelete'
         axios.post(path,dataq).then((response) => {
                 console.log(response)
              swal("Alumno eliminado correctamente!","","success").then(()=>{

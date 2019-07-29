@@ -82,7 +82,7 @@ import swal from 'sweetalert'
                 console.log("Esta cosa es lo que tiene el rout.params "+idroute)
                 
                 const dataq = { rfid: idroute}
-                const path = 'http://localhost:3000/alumnoByRfid'
+                const path = 'http://192.168.1.72:3000/alumnoByRfid'
                 Axios.post(path,dataq
                 ).then((response) => {
                     console.log(response.data.r[0])

@@ -7,15 +7,15 @@
         <v-spacer></v-spacer>
             <v-container>
         <v-form  @submit="onSubmit">
-        <v-text-field v-model.trim="form.nombre"  label="Nombre" required></v-text-field>
+        <v-text-field v-model.trim="nombre"  label="Nombre" required></v-text-field>
 
-        <v-text-field v-model.trim="form.apellido_paterno"  label="Apellido paterno" required></v-text-field>
+        <v-text-field v-model.trim="apellido_paterno"  label="Apellido paterno" required></v-text-field>
 
-        <v-text-field v-model.trim="form.apellido_materno"  label="Apellido materno" required></v-text-field>
+        <v-text-field v-model.trim="apellido_materno"  label="Apellido materno" required></v-text-field>
 
-        <v-text-field v-model.trim="form.matricula"  label="Matricula" required></v-text-field>
+        <v-text-field v-model.trim="matricula"  label="Matricula" required></v-text-field>
                 
-        <v-text-field v-model.trim="form.rfid"  label="RFID" required disabled></v-text-field>
+        <v-text-field v-model.trim="rfid"  label="RFID" required disabled></v-text-field>
 
 
 
@@ -37,37 +37,32 @@
 import Axios from 'axios';
 import VueSocketIO from 'vue-socket.io';
 import swal from 'sweetalert'
-// const io = require('socket.io-client')
-//     const socket = io('http://192.168.1.72:3000');
-//                     socket.on('registro',function(data){
-//                     console.log(data)
-
-//                     });
+import io from 'socket.io-client';
     export default {
         data(){
             return{
                 // profid: this.$route.params.profesorid,
-                form: {
-                    nombre:'',
-                    apellido_paterno:'',
-                    apellido_materno:'',
-                    matricula:null,
-                    rfid:null
-                }
+           
+                nombre:'',
+                apellido_paterno:'',
+                apellido_materno:'',
+                matricula:null,
+                rfid:null,
+                socket : io('localhost:3000')
             }
         },
         methods: {
             onSubmit() {
                 const dataq = { 
-                    nombre: this.form.nombre,
-                    apellido_paterno: this.form.apellido_paterno,
-                    apellido_materno: this.form.apellido_materno,
-                    matricula: this.form.matricula,
-                    rfid: this.form.rfid
+                    nombre: this.nombre,
+                    apellido_paterno: this.apellido_paterno,
+                    apellido_materno: this.apellido_materno,
+                    matricula: this.matricula,
+                    rfid: this.rfid
                     }
                  console.log(dataq)
 
-                const path = 'http://localhost:3000/registro'
+                const path = 'http://192.168.1.72:3000/registro'
                 Axios.post(path,dataq)
                 .then((response) => {
                     console.log(response.data)
@@ -77,13 +72,17 @@ import swal from 'sweetalert'
                 })
             }, 
             socketRFID(){
-                const io = require('socket.io-client')
-                const socket = io('http://192.168.1.72:3000');
-                    socket.on('registro',function(data){
+                let x= 1;
+                this.socket.on('registro', (data) => {
                     console.log(data)
-                    this.form.rfid = data
-                    });
-            }
+                    x= data;
+                    console.log(this.rfid)
+                    this.rfid= x
+                    console.log(this.rfid);
+                });
+                
+            },
+            
         }, created(){
             this.socketRFID()
         }
